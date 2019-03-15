@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_031151) do
+ActiveRecord::Schema.define(version: 2019_03_15_232433) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.string "occurrence"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "location_activities", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "activity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.integer "zip_code"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
