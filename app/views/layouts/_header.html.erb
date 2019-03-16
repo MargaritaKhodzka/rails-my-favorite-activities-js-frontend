@@ -1,17 +1,17 @@
-<ul class="nav navbar-toggleable-sm navbar-inverse bg-inverse">
-  <% if current_user %>
-    <li class="nav-item dropdown justify-content-end">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Welcome, <%= current_user.email %></a>
-      <div class="dropdown-menu">
-        <%= link_to "Home", root_path, class: "nav-link" %>
-        <%= link_to "My Activities" %>
-        <%= link_to "My Locations" %>
-        <div class="dropdown-divider"></div>
-         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-      </div>
-    </li>
-  <% else %>
-    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-    <li><%= link_to "Sign In", new_user_session_path %></li>
-  <% end %>
-</ul>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="#">ActivityBuddySearch</a>
+
+    <div class="navbar-nav">
+      <% if current_user %>
+        <div class="nav-item navbar-text">Welcome, <%= current_user.name %></div><br />
+        <%= link_to "Home", root_path, class: "nav-item nav-link active" %> -
+        <%= link_to "Locations" %> -
+        <%= link_to "Activities" %> -
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path, class: "nav-item nav-link" %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: "nav-item nav-link" %>
+      <% end %>
+    </div>
+
+</nav>
