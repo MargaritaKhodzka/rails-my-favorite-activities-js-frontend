@@ -1,0 +1,28 @@
+<%= form_for location do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %><br>
+
+  <%= f.label :state %>
+  <%= select_tag :state, options_for_select(states) %><br>
+
+  <%= f.label :zip_code %>
+  <%= f.text_field :zip_code %><br>
+
+  <%= f.collection_check_boxes :activity_ids, activities, :id, :name %><br>
+
+  <%= f.fields_for :activities do |i| %>
+    <%= i.label :name, 'What type of activity is it?' %>
+    <%= i.text_field :name %><br>
+
+    <%= i.label :occurrence %>
+    <%= select_tag :occurrence, options_for_select(weekdays) %><br>
+
+    <%= i.label :details %>
+    <%= i.text_area :details %><br><br>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
