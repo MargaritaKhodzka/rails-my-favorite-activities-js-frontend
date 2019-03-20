@@ -7,7 +7,9 @@ class Location < ApplicationRecord
   validates :name, presence: true
 
   def activities_attributes=(activity)
-    self.activities = Activity.find_or_create_by(name: activity.name)
-    self.activities.update(activity)
+    activity.each do |k, v|
+      self.activities << Activity.find_or_create_by(name: v[:name], occurrence: v[:occurrence], details: v[:details])
+      self.activities.update(v)
+    end
   end
 end
