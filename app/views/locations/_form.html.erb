@@ -21,7 +21,7 @@
     <%= i.text_field :name %><br>
 
     <%= i.label :occurrence %>
-    <%= select_tag :occurrence, options_for_select(weekdays) %><br>
+    <%= i.collection_select :occurrence, weekdays, :last, :first %><br>
 
     <%= i.label :details %>
     <%= i.text_area :details %><br><br>

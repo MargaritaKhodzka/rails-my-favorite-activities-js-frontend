@@ -1,1 +1,13 @@
-<%= @location.name %>
+<h3><%= @location.name %> - <%= link_to 'Edit', edit_location_path(@location) %></h3>
+
+<p>City: <%= @location.city == '' ? 'No City Found' : @location.name %></p>
+<p>State: <%= @location.state == '' ? 'No State Found' : @location.state %></p>
+<p>Zip Code: <%= @location.zip_code == '' ? 'No Zip Code Found' : @location.zip_code %></p>
+
+<h4>Activities in this location:</h4>
+
+<% if @activities == [] %>
+  <p>You have not added any activities to this location yet.</p>
+<% else %>
+  <%= render(@activities) %>
+<% end %>

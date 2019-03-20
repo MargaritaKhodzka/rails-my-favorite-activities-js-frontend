@@ -23,6 +23,7 @@ class LocationsController < ApplicationController
 
   def show
     if @location = Location.find_by(id: params[:id])
+      @activities = @location.activities
       render :show
     else
       redirect_to locations_path
@@ -30,7 +31,7 @@ class LocationsController < ApplicationController
   end
 
   private
-  
+
   def location_params
     params.require(:location).permit(:name, :city, :state, :zip_code, :user_id, activity_ids:[], activities_attributes: [:name, :occurrence, :details])
   end
