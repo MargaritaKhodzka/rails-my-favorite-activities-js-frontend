@@ -1,9 +1,15 @@
 <h1>Your locations:</h1>
 
 <% if @locations != [] %>
-  <%= @locations.each do |location| %>
-    <%= link_to location.name, location_path(location) %>
+<ul>
+  <% @locations.each do |location| %>
+  <li><%= link_to location.name, location_path(location) %></li>
   <% end %>
+</ul>
+
+<%= link_to 'Add a new location', new_location_path, method: :get %>
+
+
 <% else %>
   <h3>You have not added any locations yet.</h3>
   <%= link_to 'Add your location', new_location_path, method: :get %>
