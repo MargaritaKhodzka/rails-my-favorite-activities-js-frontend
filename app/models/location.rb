@@ -4,6 +4,7 @@ class Location < ApplicationRecord
   has_many :activities, through: :location_activities
 
   validates :name, presence: true
+  validates :zip_code, numericality: { only_integer: true }, length: { is: 5 }, allow_blank: true
 
   def activities_attributes=(activities_attributes)
     activities_attributes.values.each do |activity_attribute|
