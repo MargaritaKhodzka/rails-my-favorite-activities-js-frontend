@@ -1,6 +1,7 @@
 module LocationsHelper
   def states
     [
+      ['Select State'],
       ['Alabama', 'AL'],
       ['Alaska', 'AK'],
       ['Arizona', 'AZ'],

@@ -1,6 +1,7 @@
 module ActivitiesHelper
   def weekdays
     [
+      ['Select a day'],
       ['Monday'],
       ['Tuesday'],
       ['Wednesday'],
