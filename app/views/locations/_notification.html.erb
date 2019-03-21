@@ -1,0 +1,7 @@
+<% if @location.errors.any? %>
+  <% @location.errors.full_messages.each do |message| %>
+  <ul>
+    <li><%= message %></li>
+  </ul>
+  <% end %>
+<% end %>
