@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
   end
 
   def new
-    @location = Location.new
+    @location = Location.new(user_id: current_user.id)
     @location.activities.build
   end
 
