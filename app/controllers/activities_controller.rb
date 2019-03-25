@@ -27,10 +27,23 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find_by(id: params[:id])
   end
 
+  def edit
+    @activity = Activity.find_by(id: params[:id])
+  end
+
+  def update
+    @activity = Activity.find_by(id: params[:id])
+    if @activity.update(activity_params)
+      redirect_to @activity
+    else
+      render :edit
+    end
+  end
+
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :occurrence, :details, location_id:[])
+    params.require(:activity).permit(:name, :occurrence, :details)
   end
 
   def find_location
