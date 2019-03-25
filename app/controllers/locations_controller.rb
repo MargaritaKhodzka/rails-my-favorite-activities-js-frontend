@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_activities, only: %i[new create edit update]
+  before_action :current_location, only: [:update]
 
   def index
     @locations = Location.all
@@ -21,7 +22,7 @@ class LocationsController < ApplicationController
   end
 
   def show
-    if @location = Location.find_by(id: params[:id])
+    if current_location
       @activities = @location.activities
       render :show
     else
@@ -30,7 +31,7 @@ class LocationsController < ApplicationController
   end
 
   def edit
-    if @location = Location.find_by(id: params[:id])
+    if current_location
       @location.activities.build
       render :edit
     else
@@ -39,7 +40,6 @@ class LocationsController < ApplicationController
   end
 
   def update
-    @location = Location.find_by(id: params[:id])
     if @location.update(location_params)
       redirect_to @location
     else
@@ -55,5 +55,9 @@ class LocationsController < ApplicationController
 
   def find_activities
     @activities = current_user.activities
+  end
+
+  def current_location
+    @location = Location.find_by(id: params[:id])
   end
 end
