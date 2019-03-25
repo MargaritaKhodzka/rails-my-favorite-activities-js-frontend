@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_location, only: %i[index new create]
 
   def index
     @location = Location.find_by(id: params[:location_id])
@@ -30,5 +31,9 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:name, :occurrence, :details, location_id:[])
+  end
+
+  def find_location
+    @location = Location.find_by(id: params[:location_id])
   end
 end

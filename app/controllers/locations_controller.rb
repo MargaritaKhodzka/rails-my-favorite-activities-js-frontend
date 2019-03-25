@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
-  before_action :authenticate_user!, :all_activities
+  before_action :authenticate_user!
+  before_action :find_activities, only: %i[new create edit update]
 
   def index
     @locations = Location.all
@@ -52,7 +53,7 @@ class LocationsController < ApplicationController
     params.require(:location).permit(:name, :city, :state, :zip_code, :user_id, activity_ids:[], activities_attributes: %i[name occurrence details])
   end
 
-  def all_activities
+  def find_activities
     @activities = current_user.activities
   end
 end
