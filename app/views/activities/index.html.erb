@@ -1,0 +1,9 @@
+<h3>Your activities in <%= @location.name %>:</h3>
+
+<% if @activities != [] %>
+  <%= render(@activities) %>
+  <%= link_to 'Add a New Activity', new_location_activity_path%>
+<% else %>
+  <h3>You have not added any activities to this location yet.</h3>
+  <%= link_to 'Add a New Activity', new_location_activity_path%>
+<% end %>

@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :locations do
-    :activities
+    resources :activities, only: %i[index]
   end
+
+  resources :activities
 
   authenticated :user do
     root to: 'locations#index', as: :authenticated_root
