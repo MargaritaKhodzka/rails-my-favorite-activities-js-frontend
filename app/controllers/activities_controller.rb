@@ -25,6 +25,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find_by(id: params[:id])
+    @locations = @activity.locations
   end
 
   def edit
