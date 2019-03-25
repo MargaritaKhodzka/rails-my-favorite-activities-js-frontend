@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :activities, only: %i[index new create]
   end
 
-  resources :activities
+  resources :activities, only: %i[show]
 
   authenticated :user do
     root to: 'locations#index', as: :authenticated_root

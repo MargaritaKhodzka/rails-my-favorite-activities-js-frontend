@@ -22,6 +22,10 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def show
+    @activity = Activity.find_by(id: params[:id])
+  end
+
   private
 
   def activity_params
