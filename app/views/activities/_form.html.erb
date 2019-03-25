@@ -1,0 +1,14 @@
+<%= render 'layouts/error_messages', object: @activity %>
+
+<%= form_for ([@location, @activity]) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :occurrence %>
+  <%= f.collection_select :occurrence, weekdays, :last, :first %>
+
+  <%= f.label :details %>
+  <%= f.text_area :details %>
+
+  <%= f.submit %>
+<% end %>

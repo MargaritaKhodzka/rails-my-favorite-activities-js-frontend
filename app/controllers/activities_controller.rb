@@ -5,4 +5,26 @@ class ActivitiesController < ApplicationController
     @location = Location.find_by(id: params[:location_id])
     @activities = @location.activities
   end
+
+  def new
+    @location = Location.find_by(id: params[:location_id])
+    @activity = @location.activities.build
+  end
+
+  def create
+    @activity = Activity.new(activity_params)
+    @activity.location_ids = params[:location_id]
+    @location = Location.find_by(id: params[:location_id])
+    if @activity.save
+      redirect_to @activity
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def activity_params
+    params.require(:activity).permit(:name, :occurrence, :details, location_id:[])
+  end
 end
