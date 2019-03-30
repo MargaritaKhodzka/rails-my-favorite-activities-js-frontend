@@ -1,5 +1,5 @@
-<% if user_signed_in? %>
-  <h3>Welcome back, <%= @user.email %></h3>
-<% else %>
-  <h3>Welcome to the new site where you can meet activity buddies here based on your current location!</h3>
-<% end %>
+<h3>Welcome to the new site where you can meet activity buddies here based on your current location!</h3>
+
+<%= link_to 'Sign In', new_user_session_path %> |
+<%= link_to 'Sign Up', new_user_registration_path %> |
+<%= link_to 'Log in with Facebook!', user_facebook_omniauth_authorize_path %>
