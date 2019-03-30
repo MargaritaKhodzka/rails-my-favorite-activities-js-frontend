@@ -1,14 +1,17 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_location, only: %i[index new create]
+  before_action :current_activity, only: %i[show edit update]
 
   def index
-    @location = Location.find_by(id: params[:location_id])
-    @activities = @location.activities
+    if params[:location_id]
+      @activities = @location.activities
+    else
+      @activities = current_user.try(:activities)
+    end
   end
 
   def new
-    @location = Location.find_by(id: params[:location_id])
     @activity = @location.activities.build
   end
 
@@ -24,16 +27,13 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find_by(id: params[:id])
     @locations = @activity.locations
   end
 
   def edit
-    @activity = Activity.find_by(id: params[:id])
   end
 
   def update
-    @activity = Activity.find_by(id: params[:id])
     if @activity.update(activity_params)
       redirect_to @activity
     else
@@ -49,6 +49,10 @@ class ActivitiesController < ApplicationController
 
   def find_location
     @location = Location.find_by(id: params[:location_id])
+  end
+
+  def current_activity
+    @activity = Activity.find_by(id: params[:id])
   end
 
 end
