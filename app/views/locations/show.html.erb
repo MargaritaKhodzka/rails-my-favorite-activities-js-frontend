@@ -11,3 +11,4 @@
 <% else %>
   <ul><%= render(@activities) %></ul>
 <% end %>
+<%= link_to 'Add a new activity to this location', new_location_activity_path(@location), method: :get %>
