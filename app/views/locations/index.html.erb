@@ -1,4 +1,4 @@
-<h1>Your locations:</h1>
+<h3>Your locations:</h3>
 
 <% if @locations != [] %>
 <ul>
@@ -6,9 +6,7 @@
   <li><%= link_to location.name, location_path(location) %></li>
   <% end %>
 </ul>
-
 <%= link_to 'Add a new location', new_location_path, method: :get %>
-
 
 <% else %>
   <h3>You have not added any locations yet.</h3>

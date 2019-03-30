@@ -50,4 +50,5 @@ class ActivitiesController < ApplicationController
   def find_location
     @location = Location.find_by(id: params[:location_id])
   end
+
 end

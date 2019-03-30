@@ -1,8 +1,12 @@
 <h3><%= @activity.name %> - <%= link_to 'Edit', edit_activity_path(@activity) %></h3>
-<p>Occurence: <%= @activity.occurrence %></p>
-<p>Details: <%= @activity.details %></p>
 
-<h5>This activity is happening in:</h5>
-<ul>
-  <%= render(@locations) || 'The activity is not happening anywhere.' %>
-</ul>
+<p>Occurence: <%= @activity.occurrence == '' ? 'A week day has not been selected yet' : @activity.occurrence %></p>
+<p>Details: <%= @activity.details == '' ? 'No details have been added' : @activity.details %></p>
+
+<h4>This activity is happening in these locations:</h4>
+
+<% if @locations == [] %>
+  <p>You have not added any locations for this activity yet.</p>
+<% else %>
+  <ul><%= render(@locations) %></ul>
+<% end %>

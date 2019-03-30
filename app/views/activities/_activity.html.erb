@@ -1,5 +1,5 @@
 <ul>
-  <li><%= link_to activity.name, activity_path(activity) %></li>
+  <li><%= link_to activity.name, activity_path(activity) %> - <%= link_to 'Edit', edit_location_activity_path(activity) %></li>
   <ul>
     <li><%= activity.occurrence %></li>
     <li><%= activity.details %></li>
