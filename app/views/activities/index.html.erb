@@ -1,9 +1,12 @@
-<h3>Your activities in <%= @location.name %>:</h3>
+<% if @location %>
+  <h3>Your activities in <%= @location.name %>:</h3>
+<% else %>
+  <h3>All your activities:</h3>
+<% end %>
 
 <% if @activities != [] %>
   <%= render(@activities) %>
-  <%= link_to 'Add a New Activity', new_location_activity_path%>
+  <%= link_to 'Add a New Activity', new_location_activity_path, method: :get if @location %>
 <% else %>
   <h3>You have not added any activities to this location yet.</h3>
-  <%= link_to 'Add a New Activity', new_location_activity_path%>
 <% end %>
