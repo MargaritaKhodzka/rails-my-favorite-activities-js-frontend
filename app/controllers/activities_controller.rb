@@ -1,13 +1,13 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_location, only: %i[index new create]
-  before_action :current_activity, only: %i[show edit update]
+  before_action :current_activity, only: %i[show edit update destroy]
 
   def index
     if params[:location_id]
       @activities = @location.activities
     else
-      @activities = current_user.try(:activities)
+      @activities = Activity.all
     end
   end
 
@@ -38,6 +38,15 @@ class ActivitiesController < ApplicationController
       redirect_to @activity
     else
       render :edit
+    end
+  end
+
+  def destroy
+    name = @activity.name
+    if @activity.delete
+      redirect_to activities_path, notice: "#{name} has been successfully deleted."
+    else
+      render :show
     end
   end
 

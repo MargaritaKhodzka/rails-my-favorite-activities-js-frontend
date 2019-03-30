@@ -1,4 +1,4 @@
-<h3><%= @location.name %> - <%= link_to 'Edit', edit_location_path(@location) %></h3>
+<h3><%= @location.name %> - <%= link_to 'Edit', edit_location_path(@location) %> - <%= link_to 'Delete', location_path(@location), method: :delete, data: { confirm: 'Are you sure?' } %></h3>
 
 <p>City: <%= @location.city == '' ? 'No City Found' : @location.city %></p>
 <p>State: <%= @location.state == '' ? 'No State Found' : @location.state %></p>
