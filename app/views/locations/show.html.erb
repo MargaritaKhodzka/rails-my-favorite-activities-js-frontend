@@ -11,4 +11,6 @@
 <% else %>
   <ul><%= render(@activities) %></ul>
 <% end %>
-<%= link_to 'Add a new activity to this location', new_location_activity_path(@location), method: :get %>
+<%= link_to 'Add a new activity to this location', new_location_activity_path(@location), method: :get %><br><br>
+
+<%= fa_icon "arrow-left" %> <%= link_to 'Back to locations', locations_path %>
