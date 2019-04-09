@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
     if params[:location_id]
       @activities = @location.activities
     else
-      @activities = current_user.activities
+      @activities = current_user.try(:activities)
     end
   end
 
