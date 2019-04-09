@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   before_action :current_location, only: %i[update destroy]
 
   def index
-    @locations = Location.all
+    @locations = current_user.locations
   end
 
   def new

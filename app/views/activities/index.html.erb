@@ -4,8 +4,9 @@
   <h3>All your activities:</h3>
 <% end %>
 
-<% if @activities != [] %>
+<% if @activities != nil %>
   <%= render(@activities) %>
+  <%= link_to 'Add more activities', new_location_activities_path if @location %>
 <% else %>
-  <h3>You have not added any activities to this location yet.</h3>
+  <p>You have not added any activities to this location yet.</p>
 <% end %>
