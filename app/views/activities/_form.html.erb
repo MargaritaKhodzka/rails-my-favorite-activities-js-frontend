@@ -7,6 +7,9 @@
   <%= f.label :occurrence %>
   <%= f.collection_select :occurrence, weekdays, :last, :first %><br>
 
+  <%= f.label :time %>
+  <%= f.time_field :time %><br>
+
   <%= f.label :details %>
   <%= f.text_area :details %><br><br>
 

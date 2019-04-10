@@ -53,7 +53,7 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:name, :occurrence, :details)
+    params.require(:activity).permit(:name, :occurrence, :time, :details)
   end
 
   def find_location
