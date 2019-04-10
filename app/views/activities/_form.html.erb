@@ -1,21 +1,33 @@
 <%= render 'layouts/error_messages', object: @activity %>
 
 <%= form_for ([@location, @activity]) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
 
-  <%= f.label :occurrence %>
-  <%= f.collection_select :occurrence, weekdays, :last, :first %><br>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
 
-  <%= f.label :time %>
-  <%= f.time_field :time %><br>
+  <div class="form-group">
+    <%= f.label :occurrence %>
+    <%= f.collection_select :occurrence, weekdays, :last, :first, class: 'form-control' %>
+  </div>
 
-  <%= f.label :details %>
-  <%= f.text_area :details %><br><br>
+  <div class="form-group">
+    <%= f.label :time %>
+    <%= f.time_field :time, class: 'form-control' %>
+  </div>
 
-  <%= f.submit %>
+  <div class="form-group">
+    <%= f.label :details %>
+    <%= f.text_area :details, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 
-<br>
-<%= fa_icon "arrow-left" %> <%= link_to 'Back to activities', activities_path %>
 <br><br>
+<% if @location %>
+  <%= fa_icon "arrow-left" %> <%= link_to 'Back to location', location_path(@location.id) %>
+<% else %>
+  <%= fa_icon "arrow-left" %> <%= link_to 'Back to activities', activities_path %>
+<% end %>
