@@ -5,6 +5,6 @@ class StaticController < ApplicationController
   end
 
   def favorites
-    @favorites = current_user.favorite_activities
+    @favorites = current_user.favorite_activities.uniq
   end
 end
