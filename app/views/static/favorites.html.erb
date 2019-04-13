@@ -1,0 +1,7 @@
+<h3>Your favorite activities:</h3>
+
+<ul>
+  <% @favorites.each do |favorite_activity| %>
+    <li><%= link_to favorite_activity.name, activity_path(favorite_activity) %></li>
+  <% end %>
+</ul>

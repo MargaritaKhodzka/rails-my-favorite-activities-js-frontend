@@ -1,5 +1,10 @@
 class StaticController < ApplicationController
+  before_action :authenticate_user!, only: [:favorites]
+
   def home
-    @user = current_user
+  end
+
+  def favorites
+    @favorites = current_user.favorite_activities
   end
 end
