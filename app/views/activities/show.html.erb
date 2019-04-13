@@ -1,4 +1,5 @@
-<h3><%= @activity.name %></h3><p><%= link_to 'Edit', edit_activity_path(@activity) %> - <%= link_to 'Delete', activity_path(@activity), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<h3><%= @activity.name %></h3>
+<p><%= link_to 'Edit', edit_activity_path(@activity) %> - <%= link_to 'Delete', activity_path(@activity), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
 <!-- <p>Occurence: <%= @activity.occurrence == '' ? 'A week day has not been selected yet' : @activity.occurrence %></p>
 <p>Time: <%= @activity.time.try(:strftime, ('%l:%M %p')) %></p>
