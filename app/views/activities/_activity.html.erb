@@ -3,6 +3,7 @@
   <ul>
     <li>Occurence: <%= activity.occurrence %></li>
     <li>Time: <%= activity.time.try(:strftime, ('%l:%M %p')) %></li>
+    <li>Rating: <%= activity.rating %></li>
     <li>Details: <%= activity.details %></li>
   </ul>
 </ul>

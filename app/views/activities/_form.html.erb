@@ -18,6 +18,11 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :rating, 'Rating (1-5)' %>
+    <%= f.number_field :rating, in: 1..5, step: 1, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :details %>
     <%= f.text_area :details, class: 'form-control' %>
   </div>
