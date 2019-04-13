@@ -5,7 +5,11 @@
 <% end %>
 
 <% if @activities != [] %>
-  <%= render(@activities) %>
+  <ul>
+    <% @activities.each do |activity| %>
+    <li><%= link_to activity.name, activity_path(activity) %></li>
+    <% end %>
+  </ul>
   <%= link_to 'Add more activities', new_location_activities_path if @location %>
 <% else %>
   <p>You have not added any activities to this location yet.</p>

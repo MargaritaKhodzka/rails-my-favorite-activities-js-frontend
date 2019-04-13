@@ -1,10 +1,10 @@
-<h3><%= @activity.name %> - <%= link_to 'Edit', edit_activity_path(@activity) %> - <%= link_to 'Delete', activity_path(@activity), method: :delete, data: { confirm: 'Are you sure?' } %></h3>
+<h3><%= @activity.name %></h3><p><%= link_to 'Edit', edit_activity_path(@activity) %> - <%= link_to 'Delete', activity_path(@activity), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
-<p>Occurence: <%= @activity.occurrence == '' ? 'A week day has not been selected yet' : @activity.occurrence %></p>
+<!-- <p>Occurence: <%= @activity.occurrence == '' ? 'A week day has not been selected yet' : @activity.occurrence %></p>
 <p>Time: <%= @activity.time.try(:strftime, ('%l:%M %p')) %></p>
-<p>Details: <%= @activity.details == '' ? 'No details have been added' : @activity.details %></p>
+<p>Details: <%= @activity.details == '' ? 'No details have been added' : @activity.details %></p> -->
 
-<h4>This activity is happening in these locations:</h4>
+<h5>This activity is happening in these locations:</h5>
 
 <% if @locations == [] %>
   <p>You have not added any locations for this activity yet.</p>
