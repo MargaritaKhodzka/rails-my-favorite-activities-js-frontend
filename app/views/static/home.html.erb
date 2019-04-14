@@ -1,5 +1,5 @@
-<h3>Welcome to the new site where you can meet activity buddies here based on your current location!</h3>
+<h3>Welcome to My Favorite Activities!</h3>
 
-<%= link_to 'Sign In', new_user_session_path %> |
-<%= link_to 'Sign Up', new_user_registration_path %> |
-<%= link_to 'Log in with Facebook!', user_facebook_omniauth_authorize_path %>
+<%= button_to 'Sign In', new_user_session_path, class: 'btn btn-primary btn-lg btn-block', method: :get %><br>
+<%= button_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary btn-lg btn-block', method: :get %><br>
+<%= button_to 'Log in with Facebook!', user_facebook_omniauth_authorize_path, class: 'btn btn-primary btn-lg btn-block', method: :get %>
