@@ -18,7 +18,6 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.location_ids = params[:location_id]
-    @location = Location.find_by(id: params[:location_id])
     if @activity.save
       redirect_to @activity
     else

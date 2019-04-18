@@ -1,9 +1,9 @@
 <h3><%= @location.name %></h3>
 <p><%= link_to 'Edit', edit_location_path(@location) %> - <%= link_to 'Delete', location_path(@location), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
-<p>City: <%= @location.city == '' ? 'No City Found' : @location.city %></p>
-<p>State: <%= @location.state == '' ? 'No State Found' : @location.state %></p>
-<p>Zip Code: <%= @location.zip_code == '' ? 'No Zip Code Found' : @location.zip_code %></p>
+<p><strong>City:</strong> <%= @location.city == '' ? 'No City Found' : @location.city %></p>
+<p><strong>State:</strong> <%= @location.state == '' ? 'No State Found' : @location.state %></p>
+<p><strong>Zip Code:</strong> <%= @location.zip_code == '' ? 'No Zip Code Found' : @location.zip_code %></p>
 
 <h5>Activities in this location:</h5>
 
