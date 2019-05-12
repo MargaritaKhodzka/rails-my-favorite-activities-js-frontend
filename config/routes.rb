@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :locations do
-    resources :activities, only: %i[index new create edit show]
+  resources :location_activities, only: [:show]
+
+  resources :activities do
+    resources :location_activities
   end
 
-  resources :activities
+  resources :locations only: %i[index new create]
 
   authenticated :user do
-    root to: 'locations#index', as: :authenticated_root
+    root to: 'activities#index', as: :authenticated_root
   end
 
   root 'static#home'
+  
   get 'favorites', to: 'static#favorites'
 end
