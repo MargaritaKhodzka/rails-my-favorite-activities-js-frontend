@@ -4,7 +4,7 @@ class LocationActivitiesController < ApplicationController
   end
 
   def create
-    set_activity
+    find_activity
     @location_activity = LocationActivity.new(location_activity_params)
     if @location_activity.save
       redirect_to activity_path(@activity)
@@ -23,7 +23,7 @@ class LocationActivitiesController < ApplicationController
     params.require(:location_activity).permit(:location_id, :activity_id, :rating, :details)
   end
 
-  def set_activity
+  def find_activity
     @activity = Activity.find(params[:activity_id])
   end
 end
