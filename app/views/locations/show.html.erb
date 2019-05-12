@@ -1,5 +1,7 @@
+<%= fa_icon "arrow-left" %> <%= link_to 'Back to locations', locations_path %><br><br>
+
 <h3><%= @location.name %></h3>
-<p><%= link_to 'Edit', edit_location_path(@location) %> - <%= link_to 'Delete', location_path(@location), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<p><%= link_to 'Edit', edit_location_path(@location) %></p>
 
 <p><strong>City:</strong> <%= @location.city == '' ? 'No City Found' : @location.city %></p>
 <p><strong>State:</strong> <%= @location.state == '' ? 'No State Found' : @location.state %></p>
@@ -10,8 +12,11 @@
 <% if @activities == [] %>
   <p>You have not added any activities to this location yet.</p>
 <% else %>
-  <ul><%= render(@activities) %></ul>
+  <% @location_activities.each do |a| %>
+    <ul>
+      <li><strong>Activity: </strong><%= a.activity.name %></li>
+      <li><strong>Rating: </strong><%= a.rating %></li>
+      <li><strong>Details: </strong><%= a.details %></li>
+    </ul>
+  <% end %>
 <% end %>
-<%= link_to 'Add a new activity to this location', new_location_activity_path(@location), method: :get %><br><br>
-
-<%= fa_icon "arrow-left" %> <%= link_to 'Back to locations', locations_path %>

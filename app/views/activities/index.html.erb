@@ -1,16 +1,12 @@
-<% if @location %>
-  <h3>Your activities in <%= @location.name %>:</h3>
-<% else %>
-  <h3>All your activities:</h3>
-<% end %>
-
+<h3>Your activities</h3>
 <% if @activities != [] %>
   <ul>
     <% @activities.each do |activity| %>
     <li><%= link_to activity.name, activity_path(activity) %></li>
     <% end %>
   </ul>
-  <%= link_to 'Add more activities', new_location_activities_path if @location %>
 <% else %>
   <p>You have not added any activities to this location yet.</p>
 <% end %>
+
+<%= link_to 'Add a new activity', new_activity_path %>

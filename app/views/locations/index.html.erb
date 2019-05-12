@@ -3,7 +3,7 @@
 <% if @locations != [] %>
 <ul>
   <% @locations.each do |location| %>
-  <li><%= link_to location.name, location_path(location) %></li>
+    <li><%= link_to location.name, location_path(location) %> - <%= location.city %></li>
   <% end %>
 </ul>
 <%= link_to 'Add a new location', new_location_path, method: :get %>

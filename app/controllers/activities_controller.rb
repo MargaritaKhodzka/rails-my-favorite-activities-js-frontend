@@ -1,12 +1,13 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
+  before_action :current_activity, only: %i[update destroy]
 
   def index
     @activities = current_user.activities
   end
 
   def new
-    @activity = Activity.new(user_id: current_user.id)
+    @activity = Activity.new
   end
 
   def create
@@ -22,6 +23,31 @@ class ActivitiesController < ApplicationController
     current_activity
     @location_activities = @activity.location_activities
     @location_activity = LocationActivity.new
+  end
+
+  def edit
+    if current_activity
+      render :edit
+    else
+      redirect_to activities_path
+    end
+  end
+
+  def update
+    if @activity.update(activity_params)
+      redirect_to @activity
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    name = @activity.name
+    if @activity.delete
+      redirect_to activities_path, notice: "#{name} has been successfully deleted."
+    else
+      render :show
+    end
   end
 
   private

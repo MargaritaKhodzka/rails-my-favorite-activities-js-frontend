@@ -7,13 +7,13 @@ Rails.application.routes.draw do
     resources :location_activities
   end
 
-  resources :locations only: %i[index new create]
+  resources :locations
 
   authenticated :user do
     root to: 'activities#index', as: :authenticated_root
   end
 
   root 'static#home'
-  
+
   get 'favorites', to: 'static#favorites'
 end

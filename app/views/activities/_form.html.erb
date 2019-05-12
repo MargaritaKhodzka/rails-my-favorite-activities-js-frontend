@@ -1,38 +1,17 @@
 <%= render 'layouts/error_messages', object: @activity %>
 
-<%= form_for ([@location, @activity]) do |f| %>
+<%= form_for @activity do |f| %>
+
+  <%= f.hidden_field :user_id %>
 
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :occurrence %>
-    <%= f.collection_select :occurrence, weekdays, :last, :first, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :time %>
-    <%= f.time_field :time, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :rating, 'Rating (1-5)' %>
-    <%= f.number_field :rating, in: 1..5, step: 1, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :details %>
-    <%= f.text_area :details, class: 'form-control' %>
-  </div>
-
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 
 <br><br>
-<% if @location %>
-  <%= fa_icon "arrow-left" %> <%= link_to 'Back to location', location_path(@location.id) %>
-<% else %>
-  <%= fa_icon "arrow-left" %> <%= link_to 'Back to activities', activities_path %>
-<% end %>
+
+<%= fa_icon "arrow-left" %> <%= link_to 'Back to activities', activities_path %>
