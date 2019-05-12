@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :locations
-  has_many :activities, through: :locations
+  has_many :activities
+  has_many :location_activities, through: :activities
 
   validates :name, presence: :true
 
@@ -18,8 +18,16 @@ class User < ApplicationRecord
     end
   end
 
-  def favorite_activities
-    activities.where('rating = 5')
+  def user_locations
+    my_locations = []
+    if activities.length > 1
+      activities.each do |activity|
+        activity.locations.each do |location|
+          my_locations << location.name
+        end
+      end
+      my_locations.uniq!
+    end
   end
 
 end
