@@ -21,4 +21,5 @@ class User < ApplicationRecord
   def favorite_activities
     activities.where('rating = 5')
   end
+
 end
