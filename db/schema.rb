@@ -10,16 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_151857) do
+ActiveRecord::Schema.define(version: 2019_05_12_194102) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
-    t.string "occurrence"
-    t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "time"
-    t.integer "rating"
   end
 
   create_table "location_activities", force: :cascade do |t|
@@ -27,6 +23,9 @@ ActiveRecord::Schema.define(version: 2019_04_13_151857) do
     t.integer "activity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rating"
+    t.text "details"
+    t.integer "user_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -34,7 +33,6 @@ ActiveRecord::Schema.define(version: 2019_04_13_151857) do
     t.string "city"
     t.string "state"
     t.integer "zip_code"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
