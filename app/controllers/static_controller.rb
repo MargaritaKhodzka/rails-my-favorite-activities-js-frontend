@@ -4,7 +4,7 @@ class StaticController < ApplicationController
   def home
   end
 
-  def favorites
-    @favorites = current_user.favorite_activities
+  def user_favorites
+    @favorites = current_user.location_activities.favorite_activities
   end
 end

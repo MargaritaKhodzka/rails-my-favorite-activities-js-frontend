@@ -2,20 +2,17 @@
 
 <h3><%= @location.name %> - <%= link_to 'Edit', edit_location_path(@location) %></h3>
 
-<p><strong>City:</strong> <%= @location.city == '' ? 'No City Found' : @location.city %></p>
-<p><strong>State:</strong> <%= @location.state == '' ? 'No State Found' : @location.state %></p>
-<p><strong>Zip Code:</strong> <%= @location.zip_code == '' ? 'No Zip Code Found' : @location.zip_code %></p>
+<p><strong>City:</strong> <%= @location.city %></p>
+<p><strong>State:</strong> <%= @location.state %></p>
+<p><strong>Zip Code:</strong> <%= @location.zip_code %></p>
 
-<h5>Activities in this location:</h5>
-
-<% if @activities == [] %>
-  <p>You have not added any activities to this location yet.</p>
+<% if @location_activities == [] %>
+  <p>This location does not have any activities yet.</p>
 <% else %>
-  <% @location_activities.each do |a| %>
-    <ul>
-      <li><strong>Activity: </strong><%= a.activity.name %></li>
-      <li><strong>Rating: </strong><%= a.rating %></li>
-      <li><strong>Details: </strong><%= a.details %></li>
-    </ul>
-  <% end %>
+  <p><strong>Activities in this location:</strong></p>
+  <ul>
+    <% @location_activities.each do |a| %>
+      <li><%= a.activity.name %></li>
+    <% end %>
+  </ul>
 <% end %>

@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   root 'static#home'
 
-  get 'favorites', to: 'static#favorites'
+  get 'favorites', to: 'static#user_favorites'
 end

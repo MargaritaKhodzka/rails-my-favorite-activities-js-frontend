@@ -3,12 +3,17 @@
 <h3><%= @activity.name %></h3>
 <p><%= link_to 'Edit', edit_activity_path(@activity) %> - <%= link_to 'Delete', activity_path(@activity), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
-<% @location_activities.each do |a| %>
-  <ul>
-    <li><strong>Location: </strong><%= a.location.name %> - <%= a.location.city %></li>
-    <li><strong>Rating: </strong><%= a.rating %></li>
-    <li><strong>Details: </strong><%= a.details %></li>
-  </ul>
+<% if @location_activities == [] %>
+  <p>This activity does not have an assigned location yet.</p>
+<% else %>
+  <p><strong>Activities in this location:</strong></p>
+  <% @location_activities.each do |a| %>
+    <ul>
+      <li><strong>Location: </strong><%= a.location.name %> - <%= a.location.city %></li>
+      <li><strong>Rating: </strong><%= a.rating %></li>
+      <li><strong>Details: </strong><%= a.details %></li>
+    </ul>
+  <% end %>
 <% end %>
 
 <%= link_to 'Add additional information for this activity', new_activity_location_activity_path(@activity) %><br>
