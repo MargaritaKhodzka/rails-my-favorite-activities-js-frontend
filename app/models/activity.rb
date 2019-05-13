@@ -4,8 +4,4 @@ class Activity < ApplicationRecord
   has_many :locations, through: :location_activities
 
   validates :name, presence: true, uniqueness: true
-
-    def favorite_activities
-      location_activities.where('rating = 5')
-    end
 end

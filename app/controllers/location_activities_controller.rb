@@ -1,4 +1,5 @@
 class LocationActivitiesController < ApplicationController
+  
   def new
     @location_activity = LocationActivity.new(activity_id: params[:activity_id])
   end
@@ -22,4 +23,5 @@ class LocationActivitiesController < ApplicationController
   def find_activity
     @activity = Activity.find(params[:activity_id])
   end
+
 end
