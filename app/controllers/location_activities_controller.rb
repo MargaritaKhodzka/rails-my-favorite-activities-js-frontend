@@ -13,10 +13,6 @@ class LocationActivitiesController < ApplicationController
     end
   end
 
-  def show
-    @location_activity = LocationActivity.find(params[:id])
-  end
-
   private
 
   def location_activity_params

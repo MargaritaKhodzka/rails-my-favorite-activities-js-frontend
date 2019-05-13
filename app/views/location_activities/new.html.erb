@@ -1,4 +1,5 @@
 <%= render 'layouts/error_messages', object: @location_activity %>
+<%= fa_icon "arrow-left" %> <%= link_to 'Back to activities', activities_path %><br><br>
 
 <%= form_for @location_activity, url: activity_location_activities_path do |f| %>
 

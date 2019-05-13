@@ -1,7 +1,6 @@
 <%= fa_icon "arrow-left" %> <%= link_to 'Back to locations', locations_path %><br><br>
 
-<h3><%= @location.name %></h3>
-<p><%= link_to 'Edit', edit_location_path(@location) %></p>
+<h3><%= @location.name %> - <%= link_to 'Edit', edit_location_path(@location) %></h3>
 
 <p><strong>City:</strong> <%= @location.city == '' ? 'No City Found' : @location.city %></p>
 <p><strong>State:</strong> <%= @location.state == '' ? 'No State Found' : @location.state %></p>

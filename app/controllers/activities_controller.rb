@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
 
   def show
     current_activity
-    @location_activities = @activity.location_activities
+    @location_activities = @activity.location_activities.favorite_activities
     @location_activity = LocationActivity.new
   end
 

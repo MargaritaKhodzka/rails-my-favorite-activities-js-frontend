@@ -4,7 +4,4 @@ class Activity < ApplicationRecord
   has_many :locations, through: :location_activities
 
   validates :name, presence: true, uniqueness: true
-
-  scope :favorite_activities, -> { where(rating: 5) }
-
 end
