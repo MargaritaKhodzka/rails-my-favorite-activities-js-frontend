@@ -20,7 +20,7 @@ class LocationsController < ApplicationController
   end
 
   def show
-    @user_activities = @location.user_activities
+    @activities = @location.activities
   end
 
   def edit

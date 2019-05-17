@@ -11,8 +11,8 @@
 <% else %>
   <p><strong>Activities in this location:</strong></p>
   <ul>
-    <% @user_activities.each do |a| %>
-      <li><%= a.activity.name %></li>
+    <% @activities.select(:name).distinct.each do |a| %>
+      <li><%= a.name %></li>
     <% end %>
   </ul>
 <% end %>

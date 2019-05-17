@@ -3,5 +3,5 @@ class Activity < ApplicationRecord
   has_many :user_activities
   has_many :locations, through: :user_activities
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
 end
