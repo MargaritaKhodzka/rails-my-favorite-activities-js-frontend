@@ -1,4 +1,4 @@
-class LocationActivity < ApplicationRecord
+class UserActivity < ApplicationRecord
   belongs_to :location
   belongs_to :activity
 

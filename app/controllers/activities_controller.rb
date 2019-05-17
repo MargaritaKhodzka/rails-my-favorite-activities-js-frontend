@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_activity, only: %i[update destroy]
+  before_action :current_activity, only: %i[show update destroy]
 
   def index
     @activities = current_user.activities
@@ -21,8 +21,8 @@ class ActivitiesController < ApplicationController
 
   def show
     current_activity
-    @location_activities = @activity.location_activities.sort_activities
-    @location_activity = LocationActivity.new
+    @user_activities = @activity.user_activities.sort_activities
+    @user_activity = UserActivity.new
   end
 
   def edit

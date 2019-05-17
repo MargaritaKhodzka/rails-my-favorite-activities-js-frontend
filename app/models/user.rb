@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   has_many :activities
-  has_many :location_activities, through: :activities
+  has_many :user_activities, through: :activities
 
   validates :name, presence: :true
 

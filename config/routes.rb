@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :location_activities, only: [:show]
-
   resources :activities do
-    resources :location_activities
+    resources :user_activities
   end
 
   resources :locations

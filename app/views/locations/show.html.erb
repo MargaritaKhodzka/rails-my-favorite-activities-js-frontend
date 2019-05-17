@@ -6,12 +6,12 @@
 <p><strong>State:</strong> <%= @location.state %></p>
 <p><strong>Zip Code:</strong> <%= @location.zip_code %></p>
 
-<% if @location_activities == [] %>
+<% if @activities == [] %>
   <p>This location does not have any activities yet.</p>
 <% else %>
   <p><strong>Activities in this location:</strong></p>
   <ul>
-    <% @location_activities.each do |a| %>
+    <% @user_activities.each do |a| %>
       <li><%= a.activity.name %></li>
     <% end %>
   </ul>

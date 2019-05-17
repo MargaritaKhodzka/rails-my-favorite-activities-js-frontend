@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_location, only: %i[update]
+  before_action :current_location, only: %i[show edit update]
 
   def index
     @locations = Location.all.location_names
@@ -20,8 +20,7 @@ class LocationsController < ApplicationController
   end
 
   def show
-    current_location
-    @location_activities = @location.location_activities
+    @user_activities = @location.user_activities
   end
 
   def edit
