@@ -1,11 +1,11 @@
-<%= render 'layouts/error_messages', object: @user_activity %>
+<%= render 'layouts/error_messages', object: @location_activity %>
 <%= fa_icon "arrow-left" %> <%= link_to 'Back to activities', activities_path %><br><br>
 
-<%= form_for @user_activity, url: activity_user_activities_path do |f| %>
+<%= form_for @location_activity, url: activity_location_activities_path do |f| %>
 
   <%= f.hidden_field :activity_id %>
 
-  <p><strong>Select a location for this activity...</strong></p>
+  <p>Select a location for <%= @activity.name %></p>
   <div class="form-group">
     <%= f.collection_select :location_id, Location.all, :id, :name, prompt: 'Select Location' %>
   </div>

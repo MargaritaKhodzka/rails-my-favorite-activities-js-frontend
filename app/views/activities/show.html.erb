@@ -3,11 +3,11 @@
 <h3><%= @activity.name %></h3>
 <p><%= link_to 'Edit', edit_activity_path(@activity) %> - <%= link_to 'Delete', activity_path(@activity), method: :delete, data: { confirm: 'Are you sure?' } %></p>
 
-<% if @user_activities == [] %>
+<% if @location_activities == [] %>
   <p>This activity does not have an assigned location yet.</p>
 <% else %>
   <p><strong>You have selected the following location(s) for this activity:</strong></p>
-  <% @user_activities.each do |a| %>
+  <% @location_activities.each do |a| %>
     <ul>
       <li><strong>Location: </strong><%= a.location.name %> - <%= a.location.city %></li>
       <li><strong>Rating: </strong><%= a.rating %></li>
@@ -16,4 +16,4 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Add additional information for this activity', new_activity_user_activity_path(@activity) %><br>
+<%= link_to 'Add additional information for this activity', new_activity_location_activity_path(@activity) %><br>

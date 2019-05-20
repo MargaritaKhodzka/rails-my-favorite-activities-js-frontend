@@ -1,2 +1,0 @@
-module UserActivityHelper
-end
