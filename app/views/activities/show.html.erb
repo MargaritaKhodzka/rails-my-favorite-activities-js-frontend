@@ -9,7 +9,7 @@
   <p><strong>You have selected the following location(s) for this activity:</strong></p>
   <% @location_activities.each do |a| %>
     <ul>
-      <li><strong>Location: </strong><%= a.location.name %> - <%= a.location.city %></li>
+      <li><strong>Location: </strong><%= link_to a.location.name, activity_location_path(@activity, a.location) %> - <%= a.location.city %></li>
       <li><strong>Rating: </strong><%= a.rating %></li>
       <li><strong>Details: </strong><%= a.details %></li>
     </ul>

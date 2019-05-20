@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :activities do
     resources :location_activities
+    resources :locations
   end
 
   resources :locations
