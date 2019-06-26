@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   end
 
   resources :locations
-
-  authenticated :user do
-    root to: 'activities#index', as: :authenticated_root
-  end
-
   root 'static#home'
+
+  # authenticated :user do
+  #   root to: 'static#welcome', as: :authenticated_root
+  # end
+
 end
