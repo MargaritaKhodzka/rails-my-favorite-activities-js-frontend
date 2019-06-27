@@ -9,20 +9,20 @@ const bindClickHandlers = () => {
     fetch(`/activities.json`)
       .then(response => response.json())
       .then(activities => {
-        $('#container').html('')
+        $('#activities_container').html('')
         activities.forEach(activity => {
           let newActivity = new Activity(activity);
           // console.log(newActivity)
           let activityHtml = newActivity.formatIndex();
           // console.log(activityHtml)
-          $('#container').append(activityHtml);
+          $('#activities_container').append(activityHtml);
         });
       });
   });
 
   $(document).on('click', '.show_link', function(e) {
     e.preventDefault();
-    $('#container').html('')
+    $('#activities_container').html('')
     let id = $(this).attr('data-id');
     fetch(`activities/${id}.json`)
       .then(response => response.json())
@@ -30,7 +30,7 @@ const bindClickHandlers = () => {
         // console.log(activity)
         let newActivity = new Activity(activity);
         let activityHtml = newActivity.formatShow();
-        $('#container').append(activityHtml);
+        $('#activities_container').append(activityHtml);
       })
   })
 }
@@ -40,7 +40,7 @@ function Activity(activity) {
   this.id = activity.id;
   this.name = activity.name;
   this.user_id = activity.user_id;
-  this.location_activity = activity.location_activities;
+  this.location_activities = activity.location_activities;
   this.locations = activity.locations;
 }
 
@@ -57,7 +57,8 @@ Activity.prototype.formatIndex = function() {
 Activity.prototype.formatShow = function() {
   let activityHtml = `
     <h3>${this.name}</h3>
-    <p>${this.location_activities}</p>
+    <p>${this.locations.name}</p>
+    <p>${this.location_activities.rating}</p>
   `
   return activityHtml;
 }
