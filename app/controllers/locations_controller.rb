@@ -4,6 +4,10 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all.location_names
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @locations}
+    end
   end
 
   def new
@@ -25,6 +29,10 @@ class LocationsController < ApplicationController
       f.html
       f.json {render json: @location}
     end
+  end
+
+  def next
+
   end
 
   def edit

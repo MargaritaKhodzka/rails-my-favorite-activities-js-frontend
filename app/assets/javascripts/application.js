@@ -14,5 +14,5 @@
 //= require activestorage
 //= require jquery
 //= require bootstrap
-//= require activities
+//= require locations
 //= require_tree .
