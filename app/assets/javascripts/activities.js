@@ -57,6 +57,7 @@ Activity.prototype.formatIndex = function() {
 Activity.prototype.formatShow = function() {
   let activityHtml = `
     <h3>${this.name}</h3>
+    <p>${this.location_activities}</p>
   `
   return activityHtml;
 }

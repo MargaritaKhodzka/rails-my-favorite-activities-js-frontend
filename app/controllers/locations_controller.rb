@@ -21,6 +21,10 @@ class LocationsController < ApplicationController
 
   def show
     @activities = @location.activities
+    respond_to do |f|
+      f.html
+      f.json {render json: @location}
+    end
   end
 
   def edit
