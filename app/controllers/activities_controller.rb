@@ -4,6 +4,10 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = current_user.activities
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @activities}
+    end
   end
 
   def new
