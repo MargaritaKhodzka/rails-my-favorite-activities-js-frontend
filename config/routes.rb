@@ -6,8 +6,6 @@ Rails.application.routes.draw do
     resources :locations
   end
 
-  get 'locations/:id/next', to: 'locations#next'
-
   resources :locations
   root 'static#home'
 

@@ -27,7 +27,7 @@ const bindClickHandlers = () => {
     fetch(`locations/${id}.json`)
       .then(response => response.json())
       .then(location => {
-        // console.log(activity)
+        // console.log(location)
         let newLocation = new Location(location);
         let locationHtml = newLocation.formatShow();
         $('#app-container').append(locationHtml);
@@ -58,7 +58,6 @@ Location.prototype.formatIndex = function() {
 
 Location.prototype.formatShow = function() {
   let locationHtml = `
-    <button class='next-location'>Next</button>
     <h3>${this.name}</h3>
     <p>City: ${this.city}</p>
     <p>State: ${this.state}</p>

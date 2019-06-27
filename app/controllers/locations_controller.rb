@@ -31,11 +31,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  def next
-    @next_location = @location.next
-    render json: @next_location
-  end
-
   def edit
     if current_location
       render :edit
