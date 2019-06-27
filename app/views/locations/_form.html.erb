@@ -1,6 +1,6 @@
 <%= render 'layouts/error_messages', object: @location %>
 
-<%= form_for @location do |f| %>
+<%= form_for @location, :html => {:id => "new-location"}  do |f| %>
 
   <div class="form-group">
     <%= f.label :name %>

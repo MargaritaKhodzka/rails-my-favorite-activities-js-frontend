@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_location, only: %i[show edit update next]
+  before_action :current_location, only: %i[show edit update]
 
   def index
     @locations = Location.all.location_names
@@ -17,7 +17,8 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to @location
+      # redirect_to @location
+      render json: @location
     else
       render :new
     end

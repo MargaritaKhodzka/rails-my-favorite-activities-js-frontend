@@ -33,6 +33,20 @@ const bindClickHandlers = () => {
         $('#app-container').append(locationHtml);
       })
   })
+
+  $('#new-location').on('submit', function(e) {
+    e.preventDefault();
+    // console.log('submitting new location')
+    const values = $(this).serialize();
+    $.post('/locations', values)
+      .done(function(data) {
+        // console.log(data)
+        $('#app-container').html('')
+        const newLocation = new Location(data)
+        const htmlToAdd = newLocation.formatShow()
+        $('#app-container').html(htmlToAdd)
+      })
+  })
 }
 
 // constructor function
@@ -43,14 +57,14 @@ function Location(location) {
   this.state = location.state;
   this.zip_code = location.zip_code;
   this.location_activities = location.location_activities;
-  this.locations = location.locations;
+  this.activities = location.activities;
 }
 
 // methods on the prototype
 Location.prototype.formatIndex = function() {
   let locationHtml = `
     <ul>
-      <a href='/locations/${this.id}' data-id='${this.id}' class='show-link'><li>${this.name}</li></a> - ${this.city}
+      <a href='/locations/${this.id}' data-id='${this.id}' class='show-link'><li>${this.name} - ${this.city}</li></a>
     </ul>
   `
   return locationHtml;
