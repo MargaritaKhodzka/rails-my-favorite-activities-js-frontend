@@ -27,6 +27,10 @@ class ActivitiesController < ApplicationController
     current_activity
     @location_activities = @activity.location_activities.sort_activities
     @location_activity = LocationActivity.new
+    respond_to do |f|
+      f.html
+      f.json {render json: @activity}
+    end
   end
 
   def edit
@@ -61,7 +65,7 @@ class ActivitiesController < ApplicationController
   end
 
   def current_activity
-    @activity = Activity.find(params[:id])
+    @activity = current_user.activities.find(params[:id])
   end
 
 end

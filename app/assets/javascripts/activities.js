@@ -5,9 +5,9 @@ $(() => {
 const bindClickHandlers = () => {
   $('.all_activities').on('click', e => {
     e.preventDefault();
-    history.pushState(null, null, 'activities')
+    history.pushState(null, null, 'activities');
     fetch(`/activities.json`)
-      .then((response) => response.json())
+      .then(response => response.json())
       .then(activities => {
         $('#container').html('')
         activities.forEach(activity => {
@@ -19,6 +19,20 @@ const bindClickHandlers = () => {
         });
       });
   });
+
+  $(document).on('click', '.show_link', function(e) {
+    e.preventDefault();
+    $('#container').html('')
+    let id = $(this).attr('data-id');
+    fetch(`activities/${id}.json`)
+      .then(response => response.json())
+      .then(activity => {
+        // console.log(activity)
+        let newActivity = new Activity(activity);
+        let activityHtml = newActivity.formatShow();
+        $('#container').append(activityHtml);
+      })
+  })
 }
 
 // constructor function
@@ -30,12 +44,19 @@ function Activity(activity) {
   this.locations = activity.locations;
 }
 
-// method on the prototype
+// methods on the prototype
 Activity.prototype.formatIndex = function() {
   let activityHtml = `
     <ul>
-      <a href="/activities/${this.id}"><li>${this.name}</li></a>
+      <a href='/activities/${this.id}' data-id='${this.id}' class='show_link'><li>${this.name}</li></a>
     </ul>
+  `
+  return activityHtml;
+}
+
+Activity.prototype.formatShow = function() {
+  let activityHtml = `
+    <h3>${this.name}</h3>
   `
   return activityHtml;
 }
