@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_location, only: %i[show edit update]
+  before_action :current_location, only: %i[show edit update next]
 
   def index
     @locations = Location.all.location_names
@@ -32,7 +32,8 @@ class LocationsController < ApplicationController
   end
 
   def next
-
+    @next_location = @location.next
+    render json: @next_location
   end
 
   def edit
