@@ -63,19 +63,19 @@ function Location(location) {
 // methods on the prototype
 Location.prototype.formatIndex = function() {
   let locationHtml = `
-    <ul>
-      <a href='/locations/${this.id}' data-id='${this.id}' class='show-link'><li>${this.name} - ${this.city}</li></a>
-    </ul>
+    <a href='/locations/${this.id}' data-id='${this.id}' class='show-link'>
+    <h5>${this.name} - ${this.city}</h5></a>
   `
   return locationHtml;
 }
 
 Location.prototype.formatShow = function() {
   let locationHtml = `
+    <a href= '/locations/'>Back to locations</a>
     <h3>${this.name}</h3>
-    <p>City: ${this.city}</p>
-    <p>State: ${this.state}</p>
-    <p>Zip Code: ${this.zip_code}</p>
+    <p><b>City:</b> ${this.city}</p>
+    <p><b>State:</b> ${this.state}</p>
+    <p><b>Zip Code:</b> ${this.zip_code ? this.zip_code : ''}</p>
     <p><strong>Activities in this location:</strong></p>
     <p>${this.activities}</p>
   `
