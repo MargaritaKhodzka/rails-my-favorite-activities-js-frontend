@@ -72,18 +72,22 @@ Location.prototype.formatIndex = function() {
 
 Location.prototype.formatShow = function() {
   let activitiesHtml = ``
-  this.activities.forEach(activity => {
-    activitiesHtml += `<li>${activity.name}</li>`;
-  });
+  if (this.activities == false) {
+    activitiesHtml += `No activities in this location yet.`;
+  } else {
+    this.activities.forEach(activity => {
+      activitiesHtml += `<li>${activity.name}</li>`;
+    });
+  }
 
   let locationHtml = `
     <a href= '/locations/'>Back to locations</a>
     <h3>${this.name}</h3>
     <p><b>City:</b> ${this.city}</p>
-    <p><b>State:</b> ${this.state === true ? this.state : ''}</p>
+    <p><b>State:</b> ${this.state}</p>
     <p><b>Zip Code:</b> ${this.zip_code ? this.zip_code : ''}</p>
     <p><strong>Activities in this location:</strong></p>
-    <p>${activitiesHtml}</p>
+    ${activitiesHtml}
   `
   return locationHtml;
 }
