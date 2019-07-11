@@ -9,20 +9,6 @@ const bindClickHandlers = () => {
     getLocations();
   });
 
-  $(document).on('click', '.show-link', function(e) {
-    e.preventDefault();
-    let id = $(this).attr('data-id');
-    fetch(`locations/${id}.json`)
-      .then(response => response.json())
-      .then(location => {
-        // console.log(location)
-        $('#app-container').html('')
-        let newLocation = new Location(location);
-        let locationHtml = newLocation.formatShow();
-        $('#app-container').append(locationHtml);
-      })
-  })
-
   const getLocations = () => {
     fetch(`/locations.json`)
     .then(response => response.json())
@@ -30,22 +16,30 @@ const bindClickHandlers = () => {
       $('#app-container').html('')
       locations.forEach(location => {
         let newLocation = new Location(location);
-        // console.log(newLocation)
         let locationHtml = newLocation.formatIndex();
-        // console.log(locationHtml)
         $('#app-container').append(locationHtml);
       });
     });
   }
 
+  $(document).on('click', '.show-link', function(e) {
+    e.preventDefault();
+    let id = $(this).attr('data-id');
+    fetch(`locations/${id}.json`)
+      .then(response => response.json())
+      .then(location => {
+        $('#app-container').html('')
+        let newLocation = new Location(location);
+        let locationHtml = newLocation.formatShow();
+        $('#app-container').append(locationHtml);
+      })
+  })
 
   $('#new-location').on('submit', function(e) {
     e.preventDefault();
-    // console.log('submitting new location')
     const values = $(this).serialize();
     $.post('/locations', values)
-      .done(function(location) {
-        // console.log(location)
+      .done(location => {
         $('#app-container').html('')
         const newLocation = new Location(location)
         const htmlToAdd = newLocation.formatShow()
@@ -78,13 +72,9 @@ Location.prototype.formatIndex = function() {
 
 Location.prototype.formatShow = function() {
   let activitiesHtml = ``
-  if (this.activities === true) {
-    this.activities.forEach(activity => {
-      activitiesHtml += `<li>${activity.name}</li>`;
-    });
-  } else {
-    activitiesHtml += 'There are no activities at this location yet.'
-  }
+  this.activities.forEach(activity => {
+    activitiesHtml += `<li>${activity.name}</li>`;
+  });
 
   let locationHtml = `
     <a href= '/locations/'>Back to locations</a>
