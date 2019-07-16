@@ -46,6 +46,33 @@ const bindClickHandlers = () => {
         $('#app-container').html(htmlToAdd)
       })
   })
+
+  $('#sort-locations').on('click', e => {
+    e.preventDefault();
+    fetch(`/locations.json`)
+    .then(response => response.json())
+    .then(locations => {
+      $('#app-container').html('')
+      locations.sort((a, b) => {
+        var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        // names must be equal
+        return 0;
+      })
+      locations.forEach(location => {
+        let newLocation = new Location(location);
+        let locationHtml = newLocation.formatIndex();
+        $('#app-container').append(locationHtml);
+      });
+    });
+  })
 }
 
 
@@ -72,7 +99,7 @@ class Location {
 
   formatShow() {
     let activitiesHtml = ``
-    if (this.activities == false) {
+    if (this.activities.length === 0) {
       activitiesHtml += `No activities in this location yet.`;
     } else {
       this.activities.forEach(activity => {

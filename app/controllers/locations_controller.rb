@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   before_action :current_location, only: %i[show edit update]
 
   def index
-    @locations = Location.all.location_names
+    @locations = Location.all
     respond_to do |f|
       f.html {render :index}
       f.json {render json: @locations}
