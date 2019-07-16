@@ -81,7 +81,6 @@ class Location {
     }
 
     let locationHtml = `
-      <a href= '/locations/'>Back to locations</a>
       <h3>${this.name}</h3>
       <p><b>City:</b> ${this.city}</p>
       <p><b>State:</b> ${this.state}</p>
