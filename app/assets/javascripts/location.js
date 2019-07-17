@@ -47,6 +47,8 @@ const bindClickHandlers = () => {
       })
   })
 
+/*
+project assessment coding challenge - sort locations index page alpahbetically
   $('#sort-locations').on('click', e => {
     e.preventDefault();
     fetch(`/locations.json`)
@@ -73,6 +75,7 @@ const bindClickHandlers = () => {
       });
     });
   })
+*/
 }
 
 
