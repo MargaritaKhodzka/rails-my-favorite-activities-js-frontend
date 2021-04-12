@@ -24,12 +24,11 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
-
-gem 'devise'
-
-gem 'omniauth'
-gem 'omniauth-facebook'
 gem 'thin'
+gem 'devise'
+gem 'omniauth', "~> 1.9.1"
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
 
 gem 'font-awesome-rails'
 
