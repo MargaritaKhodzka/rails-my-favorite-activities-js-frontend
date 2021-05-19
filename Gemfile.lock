@@ -160,6 +160,8 @@ GEM
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.11.3-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -181,7 +183,8 @@ GEM
     pg (1.2.3)
     popper_js (1.16.0)
     public_suffix (4.0.6)
-    puma (3.12.6)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -285,6 +288,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   active_model_serializers
@@ -305,7 +309,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-rails_csrf_protection
   pg
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 6.0)
   sass-rails (~> 5.0)
   selenium-webdriver
